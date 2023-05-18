@@ -74,7 +74,7 @@ function Navbar() {
                     My Toys
                   </Link>
                   <Link
-                    to="/ad-toys"
+                    to="/add-toys"
                     className={`${
                       location.pathname === "/my-toys"
                         ? "text-blue-500 underline"
@@ -128,9 +128,9 @@ function Navbar() {
               </Link>
 
               <Link
-                to="/toys"
+                to="/all-toys"
                 className={`${
-                  location.pathname.startsWith("/toys")
+                  location.pathname.startsWith("/all-toys")
                     ? "text-blue-500 underline"
                     : "text-blue-700"
                 } block px-4 py-2 text-base font-medium`}

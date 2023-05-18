@@ -6,6 +6,7 @@ import Login from "../components/LogIn/Login";
 import Main from "../components/Main/Main";
 import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Registration/Registration";
+import ToysDetails from "../components/ToysDetails/ToysDetails";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        loader: () => fetch("http://localhost:5000/toys"),
       },
       {
         path: "/login",
@@ -32,8 +34,12 @@ const routes = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/ad-toys",
+        path: "/add-toys",
         element: <AddToyPage />,
+      },
+      {
+        path: "/toys-details",
+        element: <ToysDetails />,
       },
     ],
   },

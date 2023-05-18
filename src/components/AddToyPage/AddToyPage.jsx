@@ -11,9 +11,9 @@ const AddToyPage = () => {
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
     const subCategory = form.subCategory.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const quantity = form.quantity.value;
+    const price = form.price.value.toString();
+    const rating = form.rating.value.toString();
+    const quantity = form.quantity.value.toString();
     const description = form.description.value;
 
     const newToys = {
@@ -82,24 +82,16 @@ const AddToyPage = () => {
           </div>
           <div>
             <label className="block font-medium">Price:</label>
-            <input
-              type="number"
-              name="price"
-              className="input input-bordered"
-            />
+            <input type="text" name="price" className="input input-bordered" />
           </div>
           <div>
             <label className="block font-medium">Rating:</label>
-            <input
-              type="number"
-              name="rating"
-              className="input input-bordered"
-            />
+            <input type="text" name="rating" className="input input-bordered" />
           </div>
           <div>
             <label className="block font-medium">Available Quantity:</label>
             <input
-              type="number"
+              type="text"
               name="quantity"
               className="input input-bordered"
             />
