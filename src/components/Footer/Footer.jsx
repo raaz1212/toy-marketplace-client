@@ -103,27 +103,6 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div>
-          <span className="text-xl text-slate-700 font-bold">Newsletter</span>
-          <div className="form-control w-80">
-            <label className="label">
-              <span className="label-text">Enter your email address</span>
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="username@site.com"
-                className="input input-bordered w-full pr-16"
-              />
-              <button
-                onClick={handleOpenModal}
-                className="btn btn-primary absolute top-0 right-0 rounded-l-none"
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
       </footer>
       <div className="footer footer-center p-4 bg-base-200 text-base-content">
         <p>Copyright © 2023 - All right reserved by DC Toys Industries Ltd</p>

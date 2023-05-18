@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddToyPage from "../components/AddToyPage/AddToyPage";
 import Footer from "../components/Footer/Footer";
 import HomePage from "../components/HomePage/HomePage";
 import Login from "../components/LogIn/Login";
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/ad-toys",
+        element: <AddToyPage />,
       },
     ],
   },

@@ -74,7 +74,7 @@ function Navbar() {
                     My Toys
                   </Link>
                   <Link
-                    to="/my-toys"
+                    to="/ad-toys"
                     className={`${
                       location.pathname === "/my-toys"
                         ? "text-blue-500 underline"

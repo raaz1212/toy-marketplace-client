@@ -18,10 +18,10 @@ const ShopByCategory = () => {
           {data.categories.map((category, index) => (
             <button
               key={index}
-              className={`px-4 py-2 mx-2 font-medium rounded-md ${
+              className={`px-1 py-1 mx-1 sm:mx-4 font-normal text-xs sm:text-lg rounded-md ${
                 activeTab === index
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-700"
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 text-gray-700"
               }`}
               onClick={() => handleTabClick(index)}
             >
@@ -29,14 +29,10 @@ const ShopByCategory = () => {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {data.categories[activeTab].toys.map((toy, index) => (
             <div key={index} className="rounded-lg overflow-hidden shadow-md">
-              <img
-                className="w-full h-auto object-cover"
-                src={toy.imageUrl}
-                alt={toy.name}
-              />
+              <img className="w-full h-96" src={toy.imageUrl} alt={toy.name} />
               <div className="p-4">
                 <h3 className="text-lg font-medium text-gray-800 mb-2">
                   {toy.name}

@@ -7,13 +7,13 @@
           "name": "Flash Toy 1",
           "price": "$19.99",
           "rating": 4.5,
-          "imageUrl": "flash-toy-1.jpg"
+          "imageUrl": "https://i.ibb.co/BnthkxD/71-U6t9-O20t-L-AC-SY879.jpg"
         },
         {
           "name": "Flash Toy 2",
           "price": "$24.99",
           "rating": 4.2,
-          "imageUrl": "flash-toy-2.jpg"
+          "imageUrl": "https://i.ibb.co/qmmBbgN/51-Yl-Mcjc-CEL-AC-SX679.jpg"
         }
       ]
     },
@@ -24,13 +24,13 @@
           "name": "Batman Toy 1",
           "price": "$29.99",
           "rating": 4.7,
-          "imageUrl": "batman-toy-1.jpg"
+          "imageUrl": "https://i.ibb.co/nn6GY9R/71954-Sz-REz-L-AC-SX679.jpg"
         },
         {
           "name": "Batman Toy 2",
           "price": "$34.99",
           "rating": 4.8,
-          "imageUrl": "batman-toy-2.jpg"
+          "imageUrl": "https://i.ibb.co/FHH5M78/71-Tb-TDMOjn-L-AC-SX679.jpg"
         }
       ]
     },
@@ -41,13 +41,49 @@
           "name": "Superman Toy 1",
           "price": "$22.99",
           "rating": 4.4,
-          "imageUrl": "superman-toy-1.jpg"
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
+        },
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "https://i.ibb.co/SNSDyw2/61w3-Tta0-YVL-AC-SY879.jpg"
         },
         {
           "name": "Superman Toy 2",
           "price": "$26.99",
           "rating": 4.6,
-          "imageUrl": "superman-toy-2.jpg"
+          "imageUrl": "https://i.ibb.co/qkv8qh7/81xjnuwt59-L-AC-SX679.jpg"
         }
       ]
     }
