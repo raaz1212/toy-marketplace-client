@@ -1,0 +1,55 @@
+{
+  "categories": [
+    {
+      "categoryName": "Flash Toys",
+      "toys": [
+        {
+          "name": "Flash Toy 1",
+          "price": "$19.99",
+          "rating": 4.5,
+          "imageUrl": "flash-toy-1.jpg"
+        },
+        {
+          "name": "Flash Toy 2",
+          "price": "$24.99",
+          "rating": 4.2,
+          "imageUrl": "flash-toy-2.jpg"
+        }
+      ]
+    },
+    {
+      "categoryName": "Batman Toys",
+      "toys": [
+        {
+          "name": "Batman Toy 1",
+          "price": "$29.99",
+          "rating": 4.7,
+          "imageUrl": "batman-toy-1.jpg"
+        },
+        {
+          "name": "Batman Toy 2",
+          "price": "$34.99",
+          "rating": 4.8,
+          "imageUrl": "batman-toy-2.jpg"
+        }
+      ]
+    },
+    {
+      "categoryName": "Superman Toys",
+      "toys": [
+        {
+          "name": "Superman Toy 1",
+          "price": "$22.99",
+          "rating": 4.4,
+          "imageUrl": "superman-toy-1.jpg"
+        },
+        {
+          "name": "Superman Toy 2",
+          "price": "$26.99",
+          "rating": 4.6,
+          "imageUrl": "superman-toy-2.jpg"
+        }
+      ]
+    }
+  ]
+}
