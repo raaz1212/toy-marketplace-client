@@ -1,0 +1,33 @@
+/* For the input fields */
+.zoom-effect {
+  transition: transform 0.3s;
+}
+
+.zoom-effect:hover {
+  transform: scale(1.05);
+}
+
+/* For the button */
+.zoom-effect-button {
+  transition: transform 0.3s;
+}
+
+.zoom-effect-button:hover {
+  transform: scale(1.05);
+}
+
+/* For the links */
+.zoom-effect-link {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.zoom-effect-link:hover {
+  transform: scale(1.15);
+}
+
+.login-bg {
+  background-image: url("https://i.ibb.co/ZSN23Sy/10136775-17973908.jpg");
+  background-size: cover;
+  background-position: center;
+}
