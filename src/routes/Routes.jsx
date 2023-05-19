@@ -7,6 +7,7 @@ import Main from "../components/Main/Main";
 import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Registration/Registration";
 import ToysDetails from "../components/ToysDetails/ToysDetails";
+import PrivateRoute from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
   {
@@ -38,8 +39,13 @@ const routes = createBrowserRouter([
         element: <AddToyPage />,
       },
       {
-        path: "/toys-details",
-        element: <ToysDetails />,
+        path: "/toys/:id",
+        element: (
+          <PrivateRoute>
+            <ToysDetails />
+          </PrivateRoute>
+        ),
+        // loader: ({ params }) => fetch(`http://localhost:5000/toys/{params.id}`),
       },
     ],
   },

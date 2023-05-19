@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -9,37 +12,30 @@ const Register = () => {
   const { createUser, logOut } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
-    // 1. prevent page refresh
     event.preventDefault();
     setSuccess("");
     setError("");
-    // 2. collect form data
     const email = event.target.email.value;
     const password = event.target.password.value;
     const name = event.target.name.value;
     const photoURL = event.target.photoURL.value;
-    console.log(name, email, password, photoURL);
 
-    // validate
     if (password.length < 6) {
-      setError("Please add at least 6 characters in your password");
+      setError("Please enter at least 6 characters for your password.");
       return;
     }
 
-    // 3. create user in fb
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         setError("");
         event.target.reset();
-        setSuccess("User has been created successfully. Please login again.");
+        setSuccess("User has been created successfully.");
         updateUserData(result.user, name, photoURL);
-        // signOut(result.user); // Logout the user
         logOut(result.user);
+        showSweetAlert();
       })
       .catch((error) => {
-        console.error(error.message);
         setError(error.message);
       });
   };
@@ -50,73 +46,101 @@ const Register = () => {
       photoURL: photoURL,
     })
       .then(() => {
-        console.log("user data updated");
+        console.log("User data updated");
       })
       .catch((error) => {
         setError(error.message);
       });
   };
 
+  const showSweetAlert = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Registration Successful",
+      text: "User has been created successfully.",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#7C3AED",
+      allowOutsideClick: false,
+    });
+  };
+
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div
-        className="card p-5 shadow-lg bg-white rounded-lg"
-        style={{ width: "400px", height: "500px" }}
-      >
-        <h4 className="text-xl font-bold mb-4">Please Register</h4>
+    <div className="flex justify-center items-center h-screen bg-gradient-to-r from-purple-100 to-indigo-100">
+      <div className="max-w-md w-full mx-4 p-6 bg-white rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
+          Register
+        </h2>
         <form onSubmit={handleSubmit}>
+          <div className="mb-4 relative">
+            <FontAwesomeIcon
+              icon={faUser}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
+            <input
+              className="w-full pl-10 pr-4 py-3 rounded bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div className="mb-4 relative">
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
+            <input
+              className="w-full pl-10 pr-4 py-3 rounded bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div className="mb-4 relative">
+            <FontAwesomeIcon
+              icon={faLock}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
+            <input
+              className="w-full pl-10 pr-4 py-3 rounded bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Your Password"
+              required
+            />
+          </div>
           <input
-            className="w-full mb-4 rounded px-2 py-1 bg-lightblue-100"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Your Name"
-            required
-          />
-          <br />
-          <input
-            className="w-full mb-4 rounded px-2 py-1 bg-lightblue-100"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Your Email"
-            required
-          />
-          <br />
-          <input
-            className="w-full mb-4 rounded px-2 py-1 bg-lightblue-100"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Your Password"
-            required
-          />
-          <br />
-          <input
-            className="w-full mb-4 rounded px-2 py-1 bg-lightblue-100"
+            className="w-full mb-4 px-4 py-3 rounded bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500"
             type="url"
             name="photoURL"
             id="photoURL"
             placeholder="Your Profile Picture URL"
           />
-          <br />
           <button
-            className="btn btn-primary bg-orange w-full py-2"
+            className="w-full py-3 text-white bg-green-500 rounded hover:bg-green-600 transition-colors duration-300"
             type="submit"
           >
             Register
           </button>
         </form>
-        <p className="mt-3">
-          <p>
-            Already have an account? Please{" "}
-            <Link className="text-red-600 underline font-semibold" to="/login">
-              Login
-            </Link>{" "}
-          </p>
+        <p className="mt-4 text-center text-sm text-gray-700">
+          Already have an account? Please{" "}
+          <Link
+            className="text-orange-500 underline font-bold hover:text-red-600 transition-colors duration-300"
+            to="/login"
+          >
+            Log in
+          </Link>{" "}
+          instead.
         </p>
-        <p className="text-danger">{error}</p>
-        <p className="text-success">{success}</p>
+        {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+        {success && (
+          <p className="text-green-500 mt-4 text-center">{success}</p>
+        )}
       </div>
     </div>
   );
