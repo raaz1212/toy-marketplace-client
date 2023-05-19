@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import HomePage from "../components/HomePage/HomePage";
 import Login from "../components/LogIn/Login";
 import Main from "../components/Main/Main";
+import MyToysPage from "../components/MyToys/MyToys";
 import Navbar from "../components/Navbar/Navbar";
 import Register from "../components/Registration/Registration";
 import ToysDetails from "../components/ToysDetails/ToysDetails";
@@ -35,8 +36,16 @@ const routes = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "//my-toys",
+        element: <MyToysPage />,
+      },
+      {
         path: "/add-toys",
-        element: <AddToyPage />,
+        element: (
+          <PrivateRoute>
+            <AddToyPage />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/toys/:id",
