@@ -1,59 +1,55 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const Banner = () => {
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    let currentSlide = 0;
+
+    const slideInterval = setInterval(() => {
+      currentSlide = (currentSlide + 1) % carousel.children.length;
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 3000);
+
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, []);
+
   return (
-    <div className="carousel w-full h-64 sm:h-96">
-      <div id="slide1" className="carousel-item relative w-full">
-        <img
-          src="https://i.ibb.co/fYLbhM1/DC-Direct-Banner.jpg"
-          className="w-full"
-        />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#slide4" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide2" className="btn btn-circle">
-            ❯
-          </a>
+    <div className="carousel w-full h-64 sm:h-96 overflow-hidden">
+      <div
+        ref={carouselRef}
+        className="carousel-wrapper flex transition-transform duration-500"
+      >
+        <div className="carousel-item relative w-full">
+          <img
+            src="https://i.ibb.co/fYLbhM1/DC-Direct-Banner.jpg"
+            className="w-full"
+            alt="Slide 1"
+          />
         </div>
-      </div>
-      <div id="slide2" className="carousel-item relative w-full">
-        <img src="https://i.ibb.co/nsmDGJK/download.jpg" className="w-full" />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#slide1" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide3" className="btn btn-circle">
-            ❯
-          </a>
+        <div className="carousel-item relative w-full">
+          <img
+            src="https://i.ibb.co/nsmDGJK/download.jpg"
+            className="w-full"
+            alt="Slide 2"
+          />
         </div>
-      </div>
-      <div id="slide3" className="carousel-item relative w-full">
-        <img
-          src="https://i.ibb.co/VC5ZS6q/maxresdefault.jpg"
-          className="w-full"
-        />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#slide2" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide4" className="btn btn-circle">
-            ❯
-          </a>
+        <div className="carousel-item relative w-full">
+          <img
+            src="https://i.ibb.co/VC5ZS6q/maxresdefault.jpg"
+            className="w-full"
+            alt="Slide 3"
+          />
         </div>
-      </div>
-      <div id="slide4" className="carousel-item relative w-full">
-        <img
-          src="https://i.ibb.co/PFp396q/Mc-Farlane-Toys-DC-Multiverse-SDCC-2020-2-Packs-2.jpg"
-          className="w-full"
-        />
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a href="#slide3" className="btn btn-circle">
-            ❮
-          </a>
-          <a href="#slide1" className="btn btn-circle">
-            ❯
-          </a>
+        <div className="carousel-item relative w-full">
+          <img
+            src="https://i.ibb.co/PFp396q/Mc-Farlane-Toys-DC-Multiverse-SDCC-2020-2-Packs-2.jpg"
+            className="w-full"
+            alt="Slide 4"
+          />
         </div>
       </div>
     </div>
