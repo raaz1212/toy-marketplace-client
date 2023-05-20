@@ -62,7 +62,9 @@ const ShopByCategory = () => {
                         <h4 className="text-lg font-semibold mb-2">
                           {toy.name}
                         </h4>
-                        <p className="text-gray-600 mb-2">${toy.price}</p>
+                        <p className="text-gray-600 mb-2">
+                          Price: ${toy.price}
+                        </p>
                         <div className="flex items-center mb-2">
                           <span className="text-yellow-400 mr-1">&#9733;</span>
                           <span className="text-gray-600">{toy.rating}</span>

@@ -54,13 +54,13 @@ const MyToysPage = () => {
 
   const handleDelete = (_id) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Are you sure? 🥺",
+      text: "Think twice, It can't be undone!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Shatup, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/toys/${_id}`, {
@@ -69,7 +69,7 @@ const MyToysPage = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+              Swal.fire("Deleted!", "Your toy has been deleted.");
               const remaining = toys.filter((toy) => toy._id !== _id);
               setToys(remaining);
             }
@@ -112,7 +112,7 @@ const MyToysPage = () => {
             title: "Success!",
             text: "Toy Updated Successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "OK",
           }).then(() => {
             // Update the toys state with the updated toy
             const updatedToys = toys.map((toy) => {
