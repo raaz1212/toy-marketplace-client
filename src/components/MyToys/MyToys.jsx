@@ -29,15 +29,21 @@ const MyToysPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { user } = useContext(AuthContext);
-  useEffect(() => {
-    // Fetch user-specific toys data from the server
-    // and update the `toys` state variable with the response
+
+  const fetchToys = () => {
     fetch(`http://localhost:5000/my-toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching toys:", error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchToys();
+  }, []); // Run only once on initial load
 
   const handleUpdate = (_id) => {
     const selected = toys.find((toy) => toy._id === _id);
@@ -76,10 +82,43 @@ const MyToysPage = () => {
     setIsModalOpen(false);
   };
 
-  const handleToyUpdate = () => {
-    // Perform the update action here
-    // You can fetch the update API or perform any other necessary logic
-    // Once the update is successful, close the modal and update the state
+  const handleToyUpdate = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const price = form.price.value.toString();
+    const quantity = form.quantity.value.toString();
+    const description = form.description.value;
+
+    const newToys = {
+      price,
+      quantity,
+      description,
+    };
+
+    console.log(newToys);
+
+    fetch(`http://localhost:5000/toys/${selectedToy._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToys),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+
     handleModalClose();
   };
 
@@ -132,27 +171,6 @@ const MyToysPage = () => {
           Update Your Toy
         </h2>
         <form onSubmit={handleToyUpdate} className="space-y-4 bg-green-50 p-6">
-          <div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="name"
-            >
-              Name:
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={selectedToy?.name || ""}
-              onChange={(e) =>
-                setSelectedToy((prevToy) => ({
-                  ...prevToy,
-                  name: e.target.value,
-                }))
-              }
-              className="form-input bg-slate-100 px-4 py-3 w-full rounded-md border border-1 border-slate-500 shadow-md"
-            />
-          </div>
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
