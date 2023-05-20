@@ -3,6 +3,7 @@ import { useInterval } from "react-use";
 import classNames from "classnames";
 import Swal from "sweetalert2";
 
+//timer storage and functionalities
 const DiscountSection = () => {
   const initialTimeRemaining = () => {
     const savedTimeRemaining = localStorage.getItem("timeRemaining");
@@ -36,6 +37,7 @@ const DiscountSection = () => {
 
   const timerExpired = timeRemaining <= 0;
 
+  //just some normal alerts
   const handleShopNowClick = () => {
     if (timerExpired) {
       Swal.fire({

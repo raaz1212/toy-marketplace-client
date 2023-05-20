@@ -7,6 +7,7 @@ import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
 const Register = () => {
+  document.title = "DC Toys | Register";
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser, logOut } = useContext(AuthContext);
@@ -56,9 +57,9 @@ const Register = () => {
   const showSweetAlert = () => {
     Swal.fire({
       icon: "success",
-      title: "Registration Successful",
-      text: "User has been created successfully.",
-      confirmButtonText: "OK",
+      title: "Registration Complete",
+      text: "Welcome To The New Journey.",
+      confirmButtonText: "Alright",
       confirmButtonColor: "#7C3AED",
       allowOutsideClick: false,
     });
@@ -133,9 +134,8 @@ const Register = () => {
             className="text-orange-500 underline font-bold hover:text-red-600 transition-colors duration-300"
             to="/login"
           >
-            Log in
+            Log In
           </Link>{" "}
-          instead.
         </p>
         {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
         {success && (

@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const AddToyPage = () => {
+  document.title = "DC Toys | Add Toy";
   const [isFormComplete, setIsFormComplete] = useState(false);
   const { user } = useContext(AuthContext);
   const handleSubmit = (event) => {
@@ -42,7 +43,7 @@ const AddToyPage = () => {
     };
 
     console.log(newToy);
-
+    //data from server
     fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: {
@@ -52,7 +53,6 @@ const AddToyPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         Swal.fire({
           position: "top-start",
           icon: "success",
@@ -60,7 +60,7 @@ const AddToyPage = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          form.reset();
+          form.reset(); //reset input field
           setIsFormComplete(false);
         });
       });

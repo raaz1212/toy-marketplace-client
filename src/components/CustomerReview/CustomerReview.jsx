@@ -19,14 +19,12 @@ const CustomerReview = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Perform submission logic
-    // You can also display a toast or perform any other action here
+    // submission logic will be here
 
-    // Show toast notification
+    // toast notification
     toast.success("Comment submitted successfully");
 
-    // Clear comment field
-    setComment("");
+    setComment(""); // clear the comment box
     setRating(0);
   };
 

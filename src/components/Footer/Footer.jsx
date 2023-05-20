@@ -21,7 +21,7 @@ const Footer = (props) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Add event listener to detect scrolling
+  // for go to top button
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -113,11 +113,11 @@ const Footer = (props) => {
         <div>
           <h2 className="text-xl text-slate-700 font-bold">Contact</h2>
           <p className="text-slate-800">
-            Address: 123 Toy Street, Cityville, Country
+            Address: 123 Toy Street, SingapurCity, Bangladesh
             <br />
-            Phone: +1 123-456-7890
+            Phone: +1 123-456-6969
             <br />
-            Email: info@dctoys.com
+            Email: mail@dctoys.com
           </p>
         </div>
       </footer>

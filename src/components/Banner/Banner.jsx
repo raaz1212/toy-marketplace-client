@@ -10,7 +10,7 @@ const Banner = () => {
     const slideInterval = setInterval(() => {
       currentSlide = (currentSlide + 1) % carousel.children.length;
       carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }, 3000);
+    }, 3000); //slider time and functions
 
     return () => {
       clearInterval(slideInterval);

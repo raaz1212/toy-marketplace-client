@@ -7,6 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import "./Login.css";
 
 const Login = () => {
+  document.title = "DC Toys | LogIn";
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");

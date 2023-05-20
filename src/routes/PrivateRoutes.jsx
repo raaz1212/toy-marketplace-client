@@ -1,24 +1,62 @@
-import React, { useContext } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../components/Provider/AuthProvider";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../Spinner/Spinner";
 
-// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
-  if (loading) {
-    return <Spinner />;
-  }
-  if (user) {
-    return children;
-  } else {
-    toast.error("Please log in to view details.");
-    console.log("ok");
-  }
-  return <Navigate state={{ from: location }} to="/login" replace></Navigate>; //for route not change
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    if (loading) {
+      setShowSpinner(true);
+    } else {
+      setShowSpinner(false); // Set showSpinner to false when loading is complete
+      if (!user) {
+        const showAlert = () => {
+          Swal.fire({
+            title: "You have to log in first to view details",
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const b = Swal.getHtmlContainer().querySelector("b");
+              updateTimerText(b);
+            },
+            willClose: () => {
+              console.log("SweetAlert closed");
+              // Navigate to the login page after the timer expires
+              navigateToLogin();
+            },
+          }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+              console.log("I was closed by the timer");
+              // Navigate to the login page after the timer expires
+              navigateToLogin();
+            }
+          });
+        };
+
+        showAlert();
+      }
+    }
+  }, [user, loading, navigate]);
+
+  const updateTimerText = (element) => {
+    const timer = Swal.getTimerLeft();
+    if (element && timer) {
+      element.textContent = timer;
+    }
+  };
+
+  const navigateToLogin = () => {
+    navigate("/login", { state: { from: location } });
+  };
+
+  return showSpinner ? <Spinner /> : user ? children : null;
 };
 
 export default PrivateRoute;

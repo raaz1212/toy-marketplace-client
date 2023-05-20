@@ -19,7 +19,7 @@ const ShopByCategory = () => {
   };
 
   if (!toys || toys.length === 0) {
-    return null; // or you can return a loading indicator or an appropriate message
+    return null;
   }
 
   return (

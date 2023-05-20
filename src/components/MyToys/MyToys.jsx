@@ -6,6 +6,7 @@ import Modal from "react-modal";
 // Set the app element
 Modal.setAppElement("#root");
 
+//modal for update toy
 const customModalStyles = {
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -24,6 +25,7 @@ const customModalStyles = {
 };
 
 const MyToysPage = () => {
+  document.title = "DC Toys | My Toys";
   const [toys, setToys] = useState([]);
   const [selectedToy, setSelectedToy] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,6 +33,7 @@ const MyToysPage = () => {
 
   const { user } = useContext(AuthContext);
 
+  //user mail info to match with server
   const fetchToys = () => {
     fetch(`http://localhost:5000/my-toys/${user?.email}`)
       .then((res) => res.json())
@@ -44,7 +47,7 @@ const MyToysPage = () => {
 
   useEffect(() => {
     fetchToys();
-  }, []); // Run only once on initial load
+  }, []);
 
   const handleUpdate = (_id) => {
     const selected = toys.find((toy) => toy._id === _id);
@@ -52,6 +55,7 @@ const MyToysPage = () => {
     setIsModalOpen(true);
   };
 
+  //delete data on server
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure? 🥺",
@@ -97,7 +101,7 @@ const MyToysPage = () => {
       quantity,
       description,
     };
-
+    //put new data on server
     fetch(`http://localhost:5000/toys/${selectedToy._id}`, {
       method: "PUT",
       headers: {
@@ -114,7 +118,7 @@ const MyToysPage = () => {
             icon: "success",
             confirmButtonText: "OK",
           }).then(() => {
-            // Update the toys state with the updated toy
+            // Update toys state with updated toy
             const updatedToys = toys.map((toy) => {
               if (toy._id === selectedToy._id) {
                 return {

@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AllToysPage = () => {
+  document.title = "DC Toys | All Toys";
   const [toys, setToys] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
-    // Fetch all toys data from the server
+    // all toys data fetch from the server
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
-        setFilteredToys(data.slice(0, 20)); // Show 20 results by default
+        setFilteredToys(data.slice(0, 20)); //  20 results by default
       });
   }, []);
 
@@ -63,9 +64,9 @@ const AllToysPage = () => {
                 <Link
                   to={`/toys/${toy._id}`}
                   className="btn btn-primary"
-                  onClick={() => {
-                    // Handle view details action
-                  }}
+                  // onClick={() => {
+                  //   // maintain view details action
+                  // }}
                 >
                   View Details
                 </Link>

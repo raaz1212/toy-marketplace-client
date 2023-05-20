@@ -37,7 +37,7 @@ const ToyDetails = () => {
   }
 
   if (!toy) {
-    return null; // or you can return a loading indicator or an appropriate message
+    return null;
   }
 
   // function to convert rating to star icons
