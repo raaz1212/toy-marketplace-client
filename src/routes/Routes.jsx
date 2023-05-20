@@ -8,6 +8,7 @@ import Login from "../components/LogIn/Login";
 import Main from "../components/Main/Main";
 import MyToysPage from "../components/MyToys/MyToys";
 import Navbar from "../components/Navbar/Navbar";
+import ErrorPage from "../components/NotFound/NotFound";
 import Register from "../components/Registration/Registration";
 import ToysDetails from "../components/ToysDetails/ToysDetails";
 import PrivateRoute from "./PrivateRoutes";
@@ -22,7 +23,7 @@ const routes = createBrowserRouter([
         <Footer />
       </>
     ),
-    // errorElement: <NotFound />, //error handler
+    errorElement: <ErrorPage />, //error handler
     children: [
       {
         path: "/",

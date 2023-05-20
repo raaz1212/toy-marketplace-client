@@ -54,7 +54,7 @@ const AddToyPage = () => {
       .then((data) => {
         console.log(data);
         Swal.fire({
-          position: "top-end",
+          position: "top-start",
           icon: "success",
           title: "Your Toy has been posted",
           showConfirmButton: false,

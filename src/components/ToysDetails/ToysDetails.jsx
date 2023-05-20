@@ -3,24 +3,38 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
+import ErrorPage from "../NotFound/NotFound";
 
 const ToyDetails = () => {
   const { id } = useParams();
   const [toy, setToy] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Fetch toy details based on the provided ID
-    fetch(`http://localhost:5000/toys/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchToyDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/toys/${id}`);
+        if (!response.ok) {
+          throw new Error("Toy not found");
+        }
+        const data = await response.json();
         const toyData = {
           ...data,
           rating: parseFloat(data.rating), // Convert rating to a number
         };
         setToy(toyData);
-      })
-      .catch((error) => console.log(error));
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
+    };
+
+    fetchToyDetails();
   }, [id]);
+
+  if (error) {
+    return <ErrorPage />;
+  }
 
   if (!toy) {
     return null; // or you can return a loading indicator or an appropriate message
@@ -60,23 +74,27 @@ const ToyDetails = () => {
           </div>
           <div className="w-0.5 bg-gray-600 mx-8"></div>{" "}
           <div className="md:w-1/2 md:pl-8">
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800 font-bold">
+            <h3 className="text-2xl font-semibold mb-8 text-gray-800 font-bold">
               {toy.name}
             </h3>
-            <p className="text-gray-600 mb-2">Seller: {toy.sellerName}</p>
+            <p className="text-gray-700 font-semibold mb-4">
+              Seller: {toy.sellerName}
+            </p>
             <p className="text-gray-600 mb-2">
               Seller Email: {toy.sellerEmail}
             </p>
             <p className="text-gray-600 mb-2">Price: ${toy.price}</p>
             <div className="flex items-center mb-2">
               <span className="text-gray-600">
-                Rating: {getStarIcons(toy.rating)}
+                {getStarIcons(toy.rating)} {toy.rating}
               </span>
             </div>
             <p className="text-gray-600 mb-2">
               Available Quantity: {toy.quantity}
             </p>
-            <p className="text-black">{toy.description}</p>
+            <p className="text-black mt-8 border-2 p-4 border-cyan-600">
+              {toy.description}
+            </p>
           </div>
         </div>
       </div>

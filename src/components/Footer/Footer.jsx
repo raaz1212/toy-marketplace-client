@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const Footer = () => {
+const Footer = (props) => {
   const [showAddToTopButton, setShowAddToTopButton] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -46,20 +45,28 @@ const Footer = () => {
       )}
       {showAddToTopButton && (
         <button
-          className="btn btn-accent fixed bottom-5 right-5"
+          className="btn bg-blue-500 fixed bottom-5 right-5"
           onClick={handleAddToTop}
         >
-          Go Top
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            height="2em"
+            width="2em"
+            {...props}
+          >
+            <path d="M5 15h4v6h6v-6h4l-7-8zM4 3h16v2H4z" />
+          </svg>
         </button>
       )}
-      <footer className="footer p-10 bg-green-50 text-neutral-content">
+      <footer className="footer p-10 bg-base-200 text-neutral-content">
         <div>
           <img
             src="https://i.ibb.co/2YpGGQv/logo.jpg"
             alt=""
             className="w-18 h-8 mr-2"
           />
-          <p className="text-blue-500">
+          <p className="text-blue-700">
             DC Toys Industries Ltd.
             <br />
             Providing reliable toys since 1969
@@ -102,6 +109,16 @@ const Footer = () => {
               </svg>
             </button>
           </div>
+        </div>
+        <div>
+          <h2 className="text-xl text-slate-700 font-bold">Contact</h2>
+          <p className="text-slate-800">
+            Address: 123 Toy Street, Cityville, Country
+            <br />
+            Phone: +1 123-456-7890
+            <br />
+            Email: info@dctoys.com
+          </p>
         </div>
       </footer>
       <div className="footer footer-center p-4 bg-base-200 text-base-content">

@@ -36,6 +36,34 @@ const GallerySection = () => {
               alt=""
             />
           </div>
+          <div className="rounded-lg overflow-hidden shadow-lg hover:border-2 border-pink-500 transition-colors duration-300 hover:transform hover:-translate-y-1">
+            <img
+              className="w-full h-auto object-cover"
+              src="https://i.ibb.co/dfQVC09/71v-O8-S7lp-UL-AC-SX679.jpg"
+              alt=""
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-lg hover:border-2 border-pink-500 transition-colors duration-300 hover:transform hover:-translate-y-1">
+            <img
+              className="w-full h-auto object-cover"
+              src="https://i.ibb.co/Nsr0vW3/71ah-J-2-Iv1-L-AC-SX679.jpg"
+              alt=""
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-lg hover:border-2 border-pink-500 transition-colors duration-300 hover:transform hover:-translate-y-1">
+            <img
+              className="w-full h-auto object-cover"
+              src="https://i.ibb.co/YtztTCr/81pi-Odc-DB0-L-AC-SX679.jpg"
+              alt=""
+            />
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-lg hover:border-2 border-pink-500 transition-colors duration-300 hover:transform hover:-translate-y-1">
+            <img
+              className="w-full h-auto object-cover"
+              src="https://i.ibb.co/7Kv2tJH/61-R-pf-A7yc-L-AC-SX679.jpg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </section>

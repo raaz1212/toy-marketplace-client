@@ -34,8 +34,8 @@ function Navbar() {
                 to="/"
                 className={`${
                   location.pathname === "/"
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } mt-4 block sm:inline-block sm:mt-0 mr-4 text-base font-medium`}
               >
                 Home
@@ -44,8 +44,8 @@ function Navbar() {
                 to="/blog"
                 className={`${
                   location.pathname.startsWith("/blog")
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } block mt-4 sm:inline-block sm:mt-0 mr-4 text-base font-medium`}
               >
                 Blogs
@@ -55,8 +55,8 @@ function Navbar() {
                 to="/toys"
                 className={`${
                   location.pathname.startsWith("/toys")
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } block mt-4 sm:inline-block sm:mt-0 mr-4 text-base font-medium`}
               >
                 All Toys
@@ -67,8 +67,8 @@ function Navbar() {
                     to="/my-toys"
                     className={`${
                       location.pathname === "/my-toys"
-                        ? "text-blue-500 underline"
-                        : "text-blue-700"
+                        ? "text-green-500 underline"
+                        : "text-green-700"
                     } block mt-4 sm:inline-block sm:mt-0 mr-4 text-base font-medium`}
                   >
                     My Toys
@@ -76,9 +76,9 @@ function Navbar() {
                   <Link
                     to="/add-toys"
                     className={`${
-                      location.pathname === "/my-toys"
-                        ? "text-blue-500 underline"
-                        : "text-blue-700"
+                      location.pathname === "/add-toys"
+                        ? "text-green-500 underline"
+                        : "text-green-700"
                     } block mt-4 sm:inline-block sm:mt-0 mr-4 text-base font-medium`}
                   >
                     Add A Toy
@@ -88,9 +88,9 @@ function Navbar() {
             </div>
           </div>
 
-          <div className="sm:hidden">
+          <div className="sm:hidden bg-green-400">
             <button
-              className="block ml-auto px-2 py-1 rounded text-blue-700 hover:text-blue-900 focus:outline-none focus:ring"
+              className="block ml-auto px-2 py-1 rounded text-green-600 hover:text-green-900 focus:outline-none focus:ring"
               onClick={() => setIsOpen(!isOpen)}
             >
               <svg viewBox="0 0 100 80" width="10" height="10">
@@ -102,14 +102,14 @@ function Navbar() {
             <div
               className={`${
                 isOpen ? "block" : "hidden"
-              } absolute top-32 right-0 left-0 z-20 py-2`}
+              } absolute top-32 right-0 left-0 z-20 py-2 bg-slate-100`}
             >
               <Link
                 to="/"
                 className={`${
                   location.pathname === "/"
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } block px-4 py-2 text-base font-medium`}
                 onClick={() => setIsOpen(false)}
               >
@@ -119,8 +119,8 @@ function Navbar() {
                 to="/blog"
                 className={`${
                   location.pathname.startsWith("/blog")
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } block px-4 py-2 text-base font-medium`}
                 onClick={() => setIsOpen(false)}
               >
@@ -128,11 +128,11 @@ function Navbar() {
               </Link>
 
               <Link
-                to="/all-toys"
+                to="/toys"
                 className={`${
                   location.pathname.startsWith("/all-toys")
-                    ? "text-blue-500 underline"
-                    : "text-blue-700"
+                    ? "text-green-500 underline"
+                    : "text-green-700"
                 } block px-4 py-2 text-base font-medium`}
                 onClick={() => setIsOpen(false)}
               >
@@ -144,19 +144,19 @@ function Navbar() {
                     to="/my-toys"
                     className={`${
                       location.pathname === "/my-toys"
-                        ? "text-blue-500 underline"
-                        : "text-blue-700"
+                        ? "text-green-500 underline"
+                        : "text-green-700"
                     } block px-4 py-2 text-base font-medium`}
                     onClick={() => setIsOpen(false)}
                   >
                     My Toys
                   </Link>
                   <Link
-                    to="/my-toys"
+                    to="/add-toys"
                     className={`${
-                      location.pathname === "/my-toys"
-                        ? "text-blue-500 underline"
-                        : "text-blue-700"
+                      location.pathname === "/add-toys"
+                        ? "text-green-500 underline"
+                        : "text-green-700"
                     } block px-4 py-2 text-base font-medium`}
                     onClick={() => setIsOpen(false)}
                   >

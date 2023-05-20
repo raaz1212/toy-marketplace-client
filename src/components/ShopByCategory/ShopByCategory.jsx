@@ -58,7 +58,7 @@ const ShopByCategory = () => {
                         src={toy.photo}
                         alt={toy.name}
                       />
-                      <div className="p-4">
+                      <div className="p-4 bg-lime-50">
                         <h4 className="text-lg font-semibold mb-2">
                           {toy.name}
                         </h4>
@@ -71,7 +71,7 @@ const ShopByCategory = () => {
                         </div>
                         <Link
                           to={`/toys/${toy._id}`}
-                          className="inline-block bg-blue-500 text-white px-4 py-2 rounded-md"
+                          className="inline-block bg-orange-400 hover:bg-orange-600 text-white px-4 py-2 rounded-md"
                         >
                           View Details
                         </Link>
