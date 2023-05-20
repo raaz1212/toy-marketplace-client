@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useInterval } from "react-use";
 import classNames from "classnames";
+import Swal from "sweetalert2";
 
 const DiscountSection = () => {
-  const [timeRemaining, setTimeRemaining] = useState(20 * 24 * 60 * 60); // 20 days in seconds
+  const initialTimeRemaining = () => {
+    const savedTimeRemaining = localStorage.getItem("timeRemaining");
+    return savedTimeRemaining
+      ? parseInt(savedTimeRemaining, 10)
+      : 20 * 24 * 60 * 60;
+  };
+
+  const [timeRemaining, setTimeRemaining] = useState(initialTimeRemaining);
+
+  useEffect(() => {
+    localStorage.setItem("timeRemaining", timeRemaining.toString());
+  }, [timeRemaining]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,6 +35,51 @@ const DiscountSection = () => {
   const seconds = timeRemaining % 60;
 
   const timerExpired = timeRemaining <= 0;
+
+  const handleShopNowClick = () => {
+    if (timerExpired) {
+      Swal.fire({
+        title: "Offer Expired",
+        text: "The discount offer has expired.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    } else {
+      Swal.fire({
+        title: "A wise man said,",
+        text: "Every discount is a scam!",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonText: "Agree",
+        cancelButtonText: "Die",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Take my respect");
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          let timerInterval;
+          Swal.fire({
+            title: "Bombing Alert!",
+            html: "Bomb will blast in <b></b> milliseconds.",
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              const b = Swal.getHtmlContainer().querySelector("b");
+              timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft();
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            },
+          }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+            }
+          });
+        }
+      });
+    }
+  };
 
   return (
     <div className="bg-gradient-to-br from-green-200 to-sky-300 py-12 px-6 text-red-500 text-center">
@@ -62,8 +119,11 @@ const DiscountSection = () => {
             </div>
           )}
         </div>
-        <button className="bg-white text-green-700 font-bold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
-          Shop now
+        <button
+          className="bg-white text-green-700 font-bold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out"
+          onClick={handleShopNowClick}
+        >
+          Claim Now
         </button>
       </div>
     </div>

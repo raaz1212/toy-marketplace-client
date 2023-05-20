@@ -27,6 +27,7 @@ const MyToysPage = () => {
   const [toys, setToys] = useState([]);
   const [selectedToy, setSelectedToy] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const { user } = useContext(AuthContext);
 
@@ -97,8 +98,6 @@ const MyToysPage = () => {
       description,
     };
 
-    console.log(newToys);
-
     fetch(`http://localhost:5000/toys/${selectedToy._id}`, {
       method: "PUT",
       headers: {
@@ -108,13 +107,26 @@ const MyToysPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
             text: "Toy Updated Successfully",
             icon: "success",
             confirmButtonText: "Cool",
+          }).then(() => {
+            // Update the toys state with the updated toy
+            const updatedToys = toys.map((toy) => {
+              if (toy._id === selectedToy._id) {
+                return {
+                  ...toy,
+                  price: newToys.price,
+                  quantity: newToys.quantity,
+                  description: newToys.description,
+                };
+              }
+              return toy;
+            });
+            setToys(updatedToys);
           });
         }
       });
@@ -122,14 +134,34 @@ const MyToysPage = () => {
     handleModalClose();
   };
 
+  const handleSort = () => {
+    const sortedToys = [...toys].sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    setToys(sortedToys);
+  };
+
   return (
     <div className="p-10 text-center bg-gray-100">
       <h1 className="text-3xl font-bold mb-4 text-center">My Toys</h1>
+      <button
+        className="btn btn-info border-2 my-6 hover:border-cyan-800"
+        onClick={handleSort}
+      >
+        sort by price
+        {sortOrder === "asc" ? "↑" : "↓"}
+      </button>
       <table className="table w-full">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Price</th>
+            <th>Price </th>
             <th>Available Quantity</th>
             <th>Detail Description</th>
             <th>Action</th>

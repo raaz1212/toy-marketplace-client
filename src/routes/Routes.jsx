@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddToyPage from "../components/AddToyPage/AddToyPage";
+import AllToysPage from "../components/AllToys/AllToys";
+import BlogPage from "../components/BlogPage/BlogPage";
 import Footer from "../components/Footer/Footer";
 import HomePage from "../components/HomePage/HomePage";
 import Login from "../components/LogIn/Login";
@@ -32,6 +34,10 @@ const routes = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
         path: "/register",
         element: <Register />,
       },
@@ -59,6 +65,10 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) => fetch(`http://localhost:5000/toys/{params.id}`),
+      },
+      {
+        path: "/toys",
+        element: <AllToysPage />,
       },
     ],
   },

@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddToyPage = () => {
+  const [isFormComplete, setIsFormComplete] = useState(false);
+  const { user } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const form = event.target;
+    const name = form.name.value;
+    const price = form.price.value;
+
+    if (name.trim() === "" || price.trim() === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Please fill in all the required fields.",
+      });
+      return;
+    }
 
     const photo = form.photo.value;
-    const name = form.name.value;
     const sellerName = form.sellerName.value;
     const sellerEmail = form.sellerEmail.value;
     const subCategory = form.subCategory.value;
-    const price = form.price.value.toString();
     const rating = form.rating.value.toString();
     const quantity = form.quantity.value.toString();
     const description = form.description.value;
 
-    const newToys = {
+    const newToy = {
       photo,
       name,
       sellerName,
@@ -28,18 +41,28 @@ const AddToyPage = () => {
       description,
     };
 
-    console.log(newToys);
+    console.log(newToy);
 
     fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newToys),
+      body: JSON.stringify(newToy),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your Toy has been posted",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          form.reset();
+          setIsFormComplete(false);
+        });
       });
   };
 
@@ -53,7 +76,7 @@ const AddToyPage = () => {
             <input type="text" name="photo" className="input input-bordered" />
           </div>
           <div>
-            <label className="block font-medium">Name:</label>
+            <label className="block font-medium">Name:(required)</label>
             <input type="text" name="name" className="input input-bordered" />
           </div>
           <div>
@@ -69,7 +92,8 @@ const AddToyPage = () => {
             <input
               type="email"
               name="sellerEmail"
-              className="input input-bordered"
+              defaultValue={user.email}
+              className="disabled input-bordered input"
             />
           </div>
           <div>
@@ -81,7 +105,7 @@ const AddToyPage = () => {
             </select>
           </div>
           <div>
-            <label className="block font-medium">Price:</label>
+            <label className="block font-medium">Price:(required)</label>
             <input type="text" name="price" className="input input-bordered" />
           </div>
           <div>

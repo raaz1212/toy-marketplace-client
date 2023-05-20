@@ -54,7 +54,7 @@ const ShopByCategory = () => {
                       className="rounded-lg overflow-hidden shadow-md"
                     >
                       <img
-                        className="w-full h-64 object-cover"
+                        className="w-full h-64 object-contain"
                         src={toy.photo}
                         alt={toy.name}
                       />
