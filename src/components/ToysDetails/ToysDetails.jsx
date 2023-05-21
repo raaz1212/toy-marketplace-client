@@ -13,7 +13,9 @@ const ToyDetails = () => {
   useEffect(() => {
     const fetchToyDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/toys/${id}`);
+        const response = await fetch(
+          `https://toy-store-server-pied.vercel.app/toys/${id}`
+        );
         if (!response.ok) {
           throw new Error("Toy not found");
         }

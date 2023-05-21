@@ -29,13 +29,13 @@ const MyToysPage = () => {
   const [toys, setToys] = useState([]);
   const [selectedToy, setSelectedToy] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("dsc");
 
   const { user } = useContext(AuthContext);
 
   //user mail info to match with server
   const fetchToys = () => {
-    fetch(`http://localhost:5000/my-toys/${user?.email}`)
+    fetch(`https://toy-store-server-pied.vercel.app/my-toys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -67,7 +67,7 @@ const MyToysPage = () => {
       confirmButtonText: "Shatup, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toy-store-server-pied.vercel.app/toys/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -102,7 +102,7 @@ const MyToysPage = () => {
       description,
     };
     //put new data on server
-    fetch(`http://localhost:5000/toys/${selectedToy._id}`, {
+    fetch(`https://toy-store-server-pied.vercel.app/toys/${selectedToy._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

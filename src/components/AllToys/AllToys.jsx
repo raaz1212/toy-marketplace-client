@@ -9,7 +9,7 @@ const AllToysPage = () => {
 
   useEffect(() => {
     // all toys data fetch from the server
-    fetch("http://localhost:5000/toys")
+    fetch("https://toy-store-server-pied.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -61,13 +61,7 @@ const AllToysPage = () => {
               <td>{toy.price}</td>
               <td>{toy.quantity}</td>
               <td>
-                <Link
-                  to={`/toys/${toy._id}`}
-                  className="btn btn-primary"
-                  // onClick={() => {
-                  //   // maintain view details action
-                  // }}
-                >
+                <Link to={`/toys/${toy._id}`} className="btn btn-primary">
                   View Details
                 </Link>
               </td>

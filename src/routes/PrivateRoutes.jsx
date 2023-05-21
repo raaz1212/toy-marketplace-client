@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }) => {
     if (loading) {
       setShowSpinner(true);
     } else {
-      setShowSpinner(false); // Set showSpinner to false when loading is complete
+      setShowSpinner(false); // Spinner won't stop without this
       if (!user) {
         const showAlert = () => {
           Swal.fire({
@@ -28,13 +28,11 @@ const PrivateRoute = ({ children }) => {
             },
             willClose: () => {
               console.log("SweetAlert closed");
-              // Navigate to the login page after the timer expires
               navigateToLogin();
             },
           }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
               console.log("I was closed by the timer");
-              // Navigate to the login page after the timer expires
               navigateToLogin();
             }
           });
