@@ -59,7 +59,7 @@ const Footer = (props) => {
           </svg>
         </button>
       )}
-      <footer className="footer p-10 bg-base-200 text-neutral-content">
+      <footer className="footer p-10 bg-base-300 text-neutral-content">
         <div>
           <img
             src="https://i.ibb.co/2YpGGQv/logo.jpg"
@@ -121,7 +121,7 @@ const Footer = (props) => {
           </p>
         </div>
       </footer>
-      <div className="footer footer-center p-4 bg-base-200 text-base-content">
+      <div className="footer footer-center p-4 bg-base-300 text-base-content">
         <p>Copyright © 2023 - All right reserved by DC Toys Industries Ltd</p>
       </div>
     </div>

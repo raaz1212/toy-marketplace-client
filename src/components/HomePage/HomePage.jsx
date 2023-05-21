@@ -4,7 +4,7 @@ import CustomerReview from "../CustomerReview/CustomerReview";
 import DiscountSection from "../DiscountSection/DiscountSection";
 import GallerySection from "../GallerySection/GallerySection";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
-import SectionWithAOS from "../Welcome/Welcome";
+import Welcome from "../Welcome/Welcome";
 
 const HomePage = () => {
   document.title = "DC Toys | Home";
@@ -15,7 +15,7 @@ const HomePage = () => {
       <GallerySection />
       <ShopByCategory />
       <CustomerReview />
-      <SectionWithAOS />
+      <Welcome />
     </div>
   );
 };

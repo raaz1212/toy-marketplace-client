@@ -1,20 +1,10 @@
 import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
-const SectionWithAOS = () => {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
+const Welcome = () => {
   return (
     <section className="bg-gray-200 ps-10">
       <div className="container py-10">
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center"
-          data-aos="zoom-out-up"
-          data-aos-duration="1000"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="md:order-2">
             <img
               src="https://i.ibb.co/bF5Cc0B/794196-14204-NPEX1-K.jpg"
@@ -34,7 +24,6 @@ const SectionWithAOS = () => {
               pleasure if you can give us some rating. THANK YOU again for your
               precious time. Be safe.
             </p>
-            <button className="btn btn-primary mt-4">Learn More</button>
           </div>
         </div>
       </div>
@@ -42,4 +31,4 @@ const SectionWithAOS = () => {
   );
 };
 
-export default SectionWithAOS;
+export default Welcome;
